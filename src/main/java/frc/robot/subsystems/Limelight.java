@@ -14,6 +14,17 @@ public class Limelight extends SubsystemBase {
   private final double cameraAngle = 0;
   private final int frameWidth = 960;
   private final int frameHeight = 720;
+  // TODO Set the degree of the limelight degrees
+  // TODO Set the height of the limelight inches
+  // TODO Set the height of the goal inches
+
+  private double limelightMountDegree = 2;
+  private double limelightHeight = 2; 
+  private double goalHeight = 107;  
+  private double angleToGoalDegrees;
+  private double angleToGoalInRadians;
+  private double distance;
+
   private NetworkTableEntry tx; 
   private NetworkTableEntry ty; 
   private NetworkTableEntry ta;
@@ -30,17 +41,38 @@ public class Limelight extends SubsystemBase {
 
   @Override
   public void periodic() {
-    // This method will be called once per scheduler run
     this.x = tx.getDouble(0.0);
     this.y = ty.getDouble(0.0);
     this.area = ta.getDouble(0.0);
 
-    // Calculate distance
-    double yWithCamAngle = this.y + this.cameraAngle;
-    
-    
     SmartDashboard.putNumber("LimelightX", x);
     SmartDashboard.putNumber("LimelightY", y);
     SmartDashboard.putNumber("LimelightArea", area);
+
+
+  }
+
+  public double getDistance(){
+    angleToGoalDegrees = limelightMountDegree +  y;
+    angleToGoalInRadians = angleToGoalDegrees * (Math.PI / 180.0);
+    distance = (goalHeight - limelightHeight)/Math.tan(angleToGoalInRadians);
+    System.out.println(distance);
+    return distance;
+  }
+  
+  public double getFrontRPM(){
+    return 1.0;
+  }
+
+  public double getBackRPM(){
+    return 1.0;
+  }
+
+  public double getAngle(){
+    return x;
+  }
+
+  public double getVerticalAngle(){
+    return y;
   }
 }
