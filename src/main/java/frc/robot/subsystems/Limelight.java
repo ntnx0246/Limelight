@@ -18,8 +18,8 @@ public class Limelight extends SubsystemBase {
   // TODO Set the height of the limelight inches
   // TODO Set the height of the goal inches
 
-  private double limelightMountDegree = 2;
-  private double limelightHeight = 2; 
+  private double limelightMountDegree = 45;
+  private double limelightHeight = 10; 
   private double goalHeight = 107;  
   private double angleToGoalDegrees;
   private double angleToGoalInRadians;
