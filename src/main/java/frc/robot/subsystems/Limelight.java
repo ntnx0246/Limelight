@@ -64,8 +64,8 @@ public class Limelight extends SubsystemBase {
     double length = 3;
     // In inches
     double angle = (goalHeight - limelightHeight) / (length);
-    angle = Math.tan(angle);
-    angle = 1.0 / angle;
+    angle = Math.atan(angle);
+    angle = Math.abs(angle - y);
     angle = Math.toDegrees(angle);
     return angle;
   }
