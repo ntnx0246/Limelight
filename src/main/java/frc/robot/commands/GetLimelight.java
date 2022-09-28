@@ -6,6 +6,8 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Limelight;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 public class GetLimelight extends CommandBase {
   Limelight limelight;
   /** Creates a new GetLimelight. */
@@ -22,9 +24,11 @@ public class GetLimelight extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    System.out.println("Distance: " + limelight.getDistance());
-    System.out.println("Angle Horizontal: " + limelight.getAngle());
-    System.out.println("Total Angle: " + limelight.getLimelightAngle() + "Y Value " + limelight.getVerticalAngle());
+    // System.out.println("Distance: " + limelight.getDistance());
+    // System.out.println("Angle Horizontal: " + limelight.getAngle());
+    SmartDashboard.putNumber("Total Angle: ", limelight.getLimelightAngle());
+    SmartDashboard.putNumber("Y Value ", limelight.getVerticalAngle());
+    SmartDashboard.putNumber("Distance ", limelight.getDistance());
   }
 
   // Called once the command ends or is interrupted.

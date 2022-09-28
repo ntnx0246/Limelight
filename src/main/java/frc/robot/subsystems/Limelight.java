@@ -18,9 +18,14 @@ public class Limelight extends SubsystemBase {
   // TODO Set the height of the limelight inches
   // TODO Set the height of the goal inches
 
-  private double limelightMountDegree = 45;
-  private double limelightHeight = 10; 
-  private double goalHeight = 107;  
+  private double limelightMountDegree = 51;
+  // private double limelightHeight = 10; 
+  // private double goalHeight = 107; 
+
+  //Test Values
+  private double limelightHeight = 22; 
+  private double goalHeight = 93;   
+
   private double angleToGoalDegrees;
   private double angleToGoalInRadians;
   private double distance;
@@ -53,7 +58,7 @@ public class Limelight extends SubsystemBase {
   }
 
   public double getDistance(){
-    angleToGoalDegrees = limelightMountDegree +  y;
+    angleToGoalDegrees = limelightMountDegree +  ty.getDouble(0.0);
     angleToGoalInRadians = angleToGoalDegrees * (Math.PI / 180.0);
     distance = (goalHeight - limelightHeight)/Math.tan(angleToGoalInRadians);
     System.out.println(distance);
@@ -61,11 +66,11 @@ public class Limelight extends SubsystemBase {
   }
 
   public double getLimelightAngle(){
-    double length = 3;
-    // In inches
-    double angle = (goalHeight - limelightHeight) / (length);
+    double length = 115;
+    // In inches adjacent
+    double angle = (goalHeight - limelightHeight) / length;
     angle = Math.atan(angle);
-    angle = Math.abs(angle - y);
+    angle = Math.abs(angle - Math.toRadians(y));
     angle = Math.toDegrees(angle);
     return angle;
   }
