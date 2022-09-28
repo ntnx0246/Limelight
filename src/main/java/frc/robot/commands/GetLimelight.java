@@ -24,6 +24,7 @@ public class GetLimelight extends CommandBase {
   public void execute() {
     System.out.println("Distance: " + limelight.getDistance());
     System.out.println("Angle Horizontal: " + limelight.getAngle());
+    System.out.println("Angle: " + limelight.getLimelightAngle());
   }
 
   // Called once the command ends or is interrupted.

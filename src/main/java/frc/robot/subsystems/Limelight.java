@@ -59,6 +59,16 @@ public class Limelight extends SubsystemBase {
     System.out.println(distance);
     return distance;
   }
+
+  public double getLimelightAngle(){
+    double length = 3;
+    // In inches
+    double angle = (goalHeight - limelightHeight) / (length);
+    angle = Math.tan(angle);
+    angle = 1.0 / angle;
+    angle = Math.toDegrees(angle);
+    return angle;
+  }
   
   public double getFrontRPM(){
     return 1.0;
