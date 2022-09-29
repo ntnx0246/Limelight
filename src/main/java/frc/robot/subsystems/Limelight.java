@@ -11,20 +11,16 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Limelight extends SubsystemBase {
   /** Creates a new Limelight. */
-  private final double cameraAngle = 0;
-  private final int frameWidth = 960;
-  private final int frameHeight = 720;
   // TODO Set the degree of the limelight degrees
   // TODO Set the height of the limelight inches
   // TODO Set the height of the goal inches
 
-  private double limelightMountDegree = 51;
-  // private double limelightHeight = 10; 
-  // private double goalHeight = 107; 
+  private double limelightMountDegree = 53.4;
+
 
   //Test Values
-  private double limelightHeight = 22; 
-  private double goalHeight = 93;   
+  private double limelightHeight = 15; 
+  private double goalHeight = 104;   
 
   private double angleToGoalDegrees;
   private double angleToGoalInRadians;
@@ -59,18 +55,20 @@ public class Limelight extends SubsystemBase {
 
   public double getDistance(){
     angleToGoalDegrees = limelightMountDegree +  ty.getDouble(0.0);
-    angleToGoalInRadians = angleToGoalDegrees * (Math.PI / 180.0);
+    //System.out.println(ty.getDouble(0.0));
+    angleToGoalInRadians = Math.toRadians(angleToGoalDegrees);
     distance = (goalHeight - limelightHeight)/Math.tan(angleToGoalInRadians);
-    System.out.println(distance);
+    //System.out.println(distance);
     return distance;
   }
 
   public double getLimelightAngle(){
-    double length = 115;
+    double length = 66;
     // In inches adjacent
     double angle = (goalHeight - limelightHeight) / length;
+    System.out.println("Y Value: " + ty.getDouble(0.0));
     angle = Math.atan(angle);
-    angle = Math.abs(angle - Math.toRadians(y));
+    angle = Math.abs(angle - Math.toRadians(ty.getDouble(0.0)));
     angle = Math.toDegrees(angle);
     return angle;
   }
