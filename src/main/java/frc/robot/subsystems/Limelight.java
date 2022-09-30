@@ -11,12 +11,6 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Limelight extends SubsystemBase {
   /** Creates a new Limelight. */
-  private final double cameraAngle = 0;
-  private final int frameWidth = 960;
-  private final int frameHeight = 720;
-  // TODO Set the degree of the limelight degrees
-  // TODO Set the height of the limelight inches
-  // TODO Set the height of the goal inches
 
   private double limelightMountDegree = 51;
   // private double limelightHeight = 10; 
